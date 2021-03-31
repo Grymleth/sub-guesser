@@ -7,18 +7,18 @@ const redditAPI = require("../../config/redditAPI");
 // @desc get reddit api config
 // @access Public
 
-router.get("/", (req, res) => {
-    res.send(redditAPI);
-});
+// router.get("/", (req, res) => {
+//     res.send(redditAPI);
+// });
 
 // @rout POST api/test
 // @desc returns your post
 // @access Public
 
-router.post("/", (req, res) => {
-    let data = req.body;
+// router.post("/", (req, res) => {
+//     let data = req.body;
 
-    res.send(data);
-});
+//     res.send(data);
+// });
 
 module.exports = router;

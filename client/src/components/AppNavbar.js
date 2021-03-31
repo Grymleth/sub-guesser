@@ -34,6 +34,11 @@ class AppNavbar extends Component{
                                     <NavLink href="https://github.com/Grymleth">GitHub</NavLink>
                                 </NavItem>
                             </Nav>
+                            <Nav className="ml" navbar>
+                                <NavItem>
+                                    <NavLink href="http://localhost:5000/auth/reddit">Login with Reddit</NavLink>
+                                </NavItem>
+                            </Nav>
                         </Collapse>
                     </Container>
                 </Navbar>
