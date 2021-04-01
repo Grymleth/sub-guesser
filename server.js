@@ -3,9 +3,11 @@ const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config();
 const mongoose = require("mongoose");
+const passport = require("passport");
 
 // test express api
-const auth = require("./routes/auth");
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/api/user");
 const session = require("express-session");                                                                                                                                                     
 
 const app = express();
@@ -20,12 +22,17 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 // reddit authentication
-app.use("/auth", auth);
+app.use("/auth", authRoutes);
+
+// server api
+app.use("/api/user", userRoutes);
 
 app.use((req, res) => {
-    res.status(404);
-    res.json({ error: "Not found"});
+    res.status(404).json({ error: "Not found"});
 });
 
 // connect to mongodb
