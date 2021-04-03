@@ -26,14 +26,28 @@ passport.use(new RedditStrategy({
     // find user
     User.findOne({ redditID: profile.id }).then((currentUser) => {
         if(currentUser){
-            return done(null, { profile: currentUser, accessToken });
+            user = {
+                id: currentUser.id,
+                name: currentUser.username,
+                redditID: currentUser.redditID,
+                accessToken,
+                refreshToken
+            }
+            return done(null, user);
         }
         else{
             new User({
                 redditID: profile.id,
                 username: profile.name
             }).save().then((newUser) => {
-                return done(null, { profile: newUser, accessToken });
+                user = {
+                id: currentUser.id,
+                name: currentUser.name,
+                redditID: currentUser.redditID,
+                accessToken,
+                refreshToken
+            }
+                return done(null, user);
             })
         }
     })
@@ -59,7 +73,7 @@ router.get("/reddit", (req, res, next) => {
 router.get("/reddit/callback", (req, res, next) =>{
     if(req.query.state == req.session.redditState){
         passport.authenticate("reddit", {
-            successRedirect: "/api/user"
+            successRedirect: "http://localhost:3000"
         })(req, res, next);
     }
     else{

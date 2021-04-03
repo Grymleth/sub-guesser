@@ -3,12 +3,13 @@ const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config();
 const mongoose = require("mongoose");
+
+const session = require("express-session");         
 const passport = require("passport");
 
 // test express api
 const authRoutes = require("./routes/auth");
-const userRoutes = require("./routes/api/user");
-const session = require("express-session");                                                                                                                                                     
+const userRoutes = require("./routes/api/user");                                                                                                                                            
 
 const app = express();
 
