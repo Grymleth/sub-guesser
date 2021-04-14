@@ -21,7 +21,8 @@ passport.deserializeUser((user, done) => {
 passport.use(new RedditStrategy({
     clientID: process.env.REDDIT_CLIENT_ID,
     clientSecret: process.env.REDDIT_SECRET,
-    callbackURL: redirectURI
+    callbackURL: redirectURI,
+    scope: "read"
 }, (accessToken, refreshToken, profile, done) => {
     // find user
     User.findOne({ redditID: profile.id }).then((currentUser) => {
@@ -60,7 +61,6 @@ router.get("/test", (req, res, next) => {
 })
 
 // reddit authentication
-// https://ssl.reddit.com/api/v1/authorize?duration=permanent&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fauth%2Freddit%2Fcallback&scope=identity&state=8da245e5e6887ddb479f1f36422c968dc22bf40d828eb9f43c569e682725c067&client_id=cHjqiiLBqNVkfQ
 router.get("/reddit", (req, res, next) => {
     req.session.redditState = crypto.randomBytes(32).toString("hex");
     passport.authenticate("reddit", {
@@ -73,7 +73,8 @@ router.get("/reddit", (req, res, next) => {
 router.get("/reddit/callback", (req, res, next) =>{
     if(req.query.state == req.session.redditState){
         passport.authenticate("reddit", {
-            successRedirect: "http://localhost:3000"
+            successRedirect: "http://localhost:3000",
+            failureRedirect: "http://localhost:3000"
         })(req, res, next);
     }
     else{

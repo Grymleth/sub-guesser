@@ -9,7 +9,8 @@ const passport = require("passport");
 
 // test express api
 const authRoutes = require("./routes/auth");
-const userRoutes = require("./routes/api/user");                                                                                                                                            
+const userRoutes = require("./routes/api/user");        
+const postRoutes = require("./routes/api/post");                                                                                                                                    
 
 const app = express();
 
@@ -31,6 +32,8 @@ app.use("/auth", authRoutes);
 
 // server api
 app.use("/api/user", userRoutes);
+
+app.use("/api/post", postRoutes);
 
 app.use((req, res) => {
     res.status(404).json({ error: "Not found"});

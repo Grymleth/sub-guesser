@@ -24,6 +24,7 @@
     "mongoose": "^5.12.2",
     "passport": "^0.4.1",
     "passport-reddit": "^0.2.4",
-    "querystring": "^0.2.1"
+    "querystring": "^0.2.1",
+    "react-router-dom": "^5.2.0"
   }
 }

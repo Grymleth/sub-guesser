@@ -1,4 +1,5 @@
-export const ITEMS_LOADING = 'ITEMS_LOADING';
+export const GET_POSTS = 'GET_POSTS';
+export const POSTS_LOADING = 'POSTS_LOADING';
 export const USER_LOADING = 'USER_LOADING';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
