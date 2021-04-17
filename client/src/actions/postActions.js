@@ -13,12 +13,15 @@ export const getPosts = () => (dispatch, getState) => {
     axios
         .get('/api/post', tokenConfig(getState))
         .then(res => {
+            console.log(res.config);
             dispatch({
                 type: GET_POSTS,
-                payload:res.data
-            })
+                payload: res.data
+            });
         })
-        .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status));
+        });
 }
 
 export const setPostsLoading = () => {

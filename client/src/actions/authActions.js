@@ -13,7 +13,6 @@ import {
 export const loadUser = () => (dispatch, getState) => {
     // user loading
     dispatch({ type: USER_LOADING });
-
     axios.get('/api/user')
         .then((res) => {
             dispatch({

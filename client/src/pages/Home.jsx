@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import {
     Container,
@@ -8,7 +8,6 @@ import {
     CardText, 
     CardBody, 
     CardTitle, 
-    CardSubtitle, 
     Button
 } from 'reactstrap';
 
@@ -24,7 +23,7 @@ class Home extends Component {
     render() {
         const { isAuthenticated } = this.props.auth;
         const playCard = (
-            <Container>
+            <Fragment>
                 <Row>
                     <Col sm={{size: 4, offset: 4}}>
                         <Card>
@@ -36,11 +35,11 @@ class Home extends Component {
                         </Card>
                     </Col>
                 </Row>
-            </Container>
+            </Fragment>
         );
 
         const loginCard = (
-            <Container>
+            <Fragment>
                 <Row>
                     <Col sm={{size: 4, offset: 4}}>
                         <Card>
@@ -52,12 +51,14 @@ class Home extends Component {
                         </Card>
                     </Col>
                 </Row>
-            </Container>
+            </Fragment>
         )
 
         return (
             <div>
-                { isAuthenticated ? playCard : loginCard }
+                <Container>
+                    { isAuthenticated ? playCard : loginCard }
+                </Container>
             </div>
         )
     }

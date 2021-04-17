@@ -20,6 +20,7 @@ router.get("/", (req, res) => {
             { expiresIn: 3600 },
             (err, token) => {
                 if(err) throw err;
+                console.log(req.user.accessToken);
                 res.json({
                     token: token,
                     user: {

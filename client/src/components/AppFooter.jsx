@@ -1,8 +1,7 @@
 import React from 'react';
 
 import {
-    Container,
-    Row
+    Container
 } from 'reactstrap';
 
 export default function AppFooter() {

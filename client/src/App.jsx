@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'reactstrap';
-import { Provider } from 'react-redux';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 // import store from './store';
